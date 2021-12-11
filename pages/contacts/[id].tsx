@@ -9,19 +9,25 @@ type ContactTypeProps = {
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { id } = context.params;
-  const response = await fetch(`${process.env.API_REMOTE_HOST}/users/${id}`);
-  const data = await response.json();
+  try {
+    const { id } = context.params;
+    const response = await fetch(`${process.env.API_REMOTE_HOST}/users/${id}`);
+    const data = await response.json();
 
-  if (!data) {
+    if (!data) {
+      return {
+        notFound: true,
+      };
+    }
+
     return {
-      notFound: true,
+      props: { contact: data },
+    };
+  } catch {
+    return {
+      props: { contact: null },
     };
   }
-
-  return {
-    props: { contact: data },
-  };
 };
 
 const Contact: FC<ContactTypeProps> = ({ contact }) => (

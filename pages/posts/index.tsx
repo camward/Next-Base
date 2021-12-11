@@ -4,18 +4,26 @@ import Heading from "../../components/Heading";
 import { ucFirst } from "../../helpers";
 
 export const getStaticProps = async () => {
-  const response = await fetch(`${process.env.API_REMOTE_HOST}/posts?_start=0&_limit=15`);
-  const data = await response.json();
+  try {
+    const response = await fetch(
+      `${process.env.API_REMOTE_HOST}/posts?_start=0&_limit=15`
+    );
+    const data = await response.json();
 
-  if (!data) {
+    if (!data) {
+      return {
+        notFound: true,
+      };
+    }
+
     return {
-      notFound: true,
+      props: { posts: data },
+    };
+  } catch {
+    return {
+      props: { posts: null },
     };
   }
-
-  return {
-    props: { posts: data },
-  };
 };
 
 const Posts = ({ posts }) => {

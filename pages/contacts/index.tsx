@@ -10,18 +10,24 @@ type ContactsTypeProps = {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const response = await fetch(`${process.env.API_REMOTE_HOST}/users`);
-  const data = await response.json();
+  try {
+    const response = await fetch(`${process.env.API_REMOTE_HOST}/users`);
+    const data = await response.json();
 
-  if (!data) {
+    if (!data) {
+      return {
+        notFound: true,
+      };
+    }
+
     return {
-      notFound: true,
+      props: { contacts: data },
+    };
+  } catch {
+    return {
+      props: { contacts: null },
     };
   }
-
-  return {
-    props: { contacts: data },
-  };
 };
 
 const Contacts: FC<ContactsTypeProps> = ({ contacts }) => (

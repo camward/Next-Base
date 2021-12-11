@@ -3,33 +3,43 @@ import PostInfo from "../../components/PostInfo";
 import { ucFirst } from "../../helpers";
 
 export const getStaticPaths = async () => {
-  const response = await fetch(`${process.env.API_REMOTE_HOST}/posts/`);
-  const data = await response.json();
+  try {
+    const response = await fetch(`${process.env.API_REMOTE_HOST}/posts/`);
+    const data = await response.json();
 
-  const paths = data.map(({ id }) => ({
-    params: { id: id.toString() },
-  }));
+    const paths = data.map(({ id }) => ({
+      params: { id: id.toString() },
+    }));
 
-  return {
-    paths,
-    fallback: false,
-  };
+    return {
+      paths,
+      fallback: false,
+    };
+  } catch (e) {
+    throw new Error(e.message);
+  }
 };
 
 export const getStaticProps = async (context) => {
-  const { id } = context.params;
-  const response = await fetch(`${process.env.API_REMOTE_HOST}/posts/${id}`);
-  const data = await response.json();
+  try {
+    const { id } = context.params;
+    const response = await fetch(`${process.env.API_REMOTE_HOST}/posts/${id}`);
+    const data = await response.json();
 
-  if (!data) {
+    if (!data) {
+      return {
+        notFound: true,
+      };
+    }
+
     return {
-      notFound: true,
+      props: { post: data },
+    };
+  } catch {
+    return {
+      props: { post: null },
     };
   }
-
-  return {
-    props: { post: data },
-  };
 };
 
 const Post = ({ post }) => (
