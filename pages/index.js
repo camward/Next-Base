@@ -1,3 +1,9 @@
-const Home = () => <h1>Hello world!</h1>;
+import Heading from "../components/Heading";
+
+const Home = () => (
+  <>
+    <Heading text="Next.js Application" />
+  </>
+);
 
 export default Home;
