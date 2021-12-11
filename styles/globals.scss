@@ -5,7 +5,7 @@ body {
 }
 
 body {
-  font-family: "Architects Daughter", cursive;
+  font-family: "Merienda", cursive;
   background: linear-gradient(to bottom, #4e54c8, #8f94fb);
   color: #fff;
   font-size: 20px;
@@ -23,7 +23,7 @@ main {
 
 header,
 footer {
-  min-height: 80px;
+  min-height: 50px;
 }
 
 header {
@@ -48,10 +48,19 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-transform: uppercase;
 }
 
 a {
   color: #fff;
   text-decoration: none;
+
+  &:hover {
+    color: #d5d5d5;
+  }
+}
+
+ul {
+  li {
+    margin-bottom: 10px;
+  }
 }

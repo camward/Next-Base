@@ -15,7 +15,8 @@ const Navbar: FC = () => {
 
   return (
     <nav className={styles.nav}>
-      <div className={styles.logo}>
+      <div className={styles.logo}>Next.js</div>
+      <div className={styles.logoImg}>
         <Image src="/logo.png" width={60} height={60} alt="Logo" />
       </div>
       <div className={styles.links}>

@@ -1,18 +1,18 @@
-export type addressType = {
+export type AddressType = {
   street: string;
   suite: string;
   city: string;
   zipcode: string;
 };
 
-export type contactType = {
+export type ContactType = {
   id: string;
   name: string;
   email: string;
-  address: addressType;
+  address: AddressType;
 };
 
-export type postType = {
+export type PostType = {
   title: string;
   body: string;
 };

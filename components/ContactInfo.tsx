@@ -1,12 +1,12 @@
 import { FC } from "react";
 import Heading from "./Heading";
-import { contactType } from "../types";
+import { ContactType } from "../types";
 
-type contactInfoProps = {
-  contact: contactType;
+type ContactInfoProps = {
+  contact: ContactType;
 };
 
-const ContactInfo: FC<contactInfoProps> = ({ contact }) => {
+const ContactInfo: FC<ContactInfoProps> = ({ contact }) => {
   const { name, email, address } = contact || {};
   const { street, suite, city, zipcode } = address || {};
 

@@ -3,7 +3,10 @@ import Heading from "./Heading";
 
 const Footer: FC = () => (
   <footer>
-    <Heading tag="h3" text="2021" />
+    <Heading
+      tag="h3"
+      text={`Next.js Application, ${new Date().getFullYear()}`}
+    />
   </footer>
 );
 

@@ -2,8 +2,8 @@ const Heading = ({
   tag,
   text,
 }: {
-  tag?: keyof JSX.IntrinsicElements;
   text: string;
+  tag?: keyof JSX.IntrinsicElements;
 }) => {
   const Tag = tag || "h1";
   return <Tag>{text}</Tag>;

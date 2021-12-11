@@ -1,12 +1,13 @@
 import { FC } from "react";
 import Heading from "./Heading";
-import { postType } from "../types";
+import { PostType } from "../types";
+import { ucFirst } from "../helpers";
 
-type postInfoProps = {
-  post: postType;
+type PostInfoProps = {
+  post: PostType;
 };
 
-const PostInfo: FC<postInfoProps> = ({ post }) => {
+const PostInfo: FC<PostInfoProps> = ({ post }) => {
   const { title, body } = post || {};
 
   if (!post) {
@@ -15,8 +16,8 @@ const PostInfo: FC<postInfoProps> = ({ post }) => {
 
   return (
     <>
-      <Heading tag="h3" text={title} />
-      <p>{body}</p>
+      <Heading tag="h3" text={ucFirst(title)} />
+      <p>{ucFirst(body)}</p>
     </>
   );
 };

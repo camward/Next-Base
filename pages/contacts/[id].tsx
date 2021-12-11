@@ -2,17 +2,15 @@ import { FC } from "react";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import ContactInfo from "../../components/ContactInfo";
-import { contactType } from "../../types";
+import { ContactType } from "../../types";
 
-type contactTypeProps = {
-  contact: contactType;
+type ContactTypeProps = {
+  contact: ContactType;
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id } = context.params;
-  const response = await fetch(
-    `https://jsonplaceholder.typicode.com/users/${id}`
-  );
+  const response = await fetch(`${process.env.API_REMOTE_HOST}/users/${id}`);
   const data = await response.json();
 
   if (!data) {
@@ -26,10 +24,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-const Contact: FC<contactTypeProps> = ({ contact }) => (
+const Contact: FC<ContactTypeProps> = ({ contact }) => (
   <>
     <Head>
-      <title>Contact page</title>
+      <title>{contact.name} | Contact page</title>
     </Head>
     <ContactInfo contact={contact} />
   </>

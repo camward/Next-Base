@@ -1,9 +1,10 @@
 import Head from "next/head";
 import Link from "next/link";
 import Heading from "../../components/Heading";
+import { ucFirst } from "../../helpers";
 
 export const getStaticProps = async () => {
-  const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const response = await fetch(`${process.env.API_REMOTE_HOST}/posts?_start=0&_limit=15`);
   const data = await response.json();
 
   if (!data) {
@@ -28,7 +29,7 @@ const Posts = ({ posts }) => {
         {posts &&
           posts.map(({ id, title }) => (
             <li key={id}>
-              <Link href={`/posts/${id}`}>{title}</Link>
+              <Link href={`/posts/${id}`}>{ucFirst(title)}</Link>
             </li>
           ))}
       </ul>

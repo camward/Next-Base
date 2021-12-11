@@ -3,14 +3,14 @@ import { GetStaticProps } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import Heading from "../../components/Heading";
-import { contactType } from "../../types";
+import { ContactType } from "../../types";
 
-type contactsTypeProps = {
-  contacts: [contactType];
+type ContactsTypeProps = {
+  contacts: [ContactType];
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const response = await fetch("https://jsonplaceholder.typicode.com/users");
+  const response = await fetch(`${process.env.API_REMOTE_HOST}/users`);
   const data = await response.json();
 
   if (!data) {
@@ -24,7 +24,7 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-const Contacts: FC<contactsTypeProps> = ({ contacts }) => (
+const Contacts: FC<ContactsTypeProps> = ({ contacts }) => (
   <>
     <Head>
       <title>Contacts</title>

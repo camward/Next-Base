@@ -9,12 +9,20 @@
     height: 100%;
   }
 
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .logoImg {
+    display: none;
+  }
+
   a {
     height: 100%;
     display: inline-flex;
     align-items: center;
-    padding: 0 10px;
-    text-transform: uppercase;
+    padding: 0 20px;
     color: #fff;
     text-decoration: none;
 

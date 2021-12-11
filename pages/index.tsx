@@ -21,7 +21,7 @@ export const getStaticProps = async () => {
 const Home = ({ socials }) => (
   <div className={styles.wrapper}>
     <Head>
-      <title>Home</title>
+      <title>Next.js Application</title>
     </Head>
     <Heading text="Next.js Application" />
     <Socials socials={socials} />

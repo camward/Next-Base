@@ -7,7 +7,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => (
   <Layout>
     <Head>
       <link
-        href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Merienda&display=swap"
         rel="stylesheet"
       />
     </Head>
