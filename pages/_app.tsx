@@ -1,9 +1,11 @@
+import React, { FC } from "react";
 import { AppProps } from "next/app";
 import Head from "next/head";
+import { wrapper } from "../store";
 import Layout from "../components/Layout";
 import "../styles/globals.scss";
 
-const MyApp = ({ Component, pageProps }: AppProps) => (
+const MyApp: FC<AppProps> = ({ Component, pageProps }: AppProps) => (
   <Layout>
     <Head>
       <link
@@ -17,4 +19,4 @@ const MyApp = ({ Component, pageProps }: AppProps) => (
   </Layout>
 );
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);
